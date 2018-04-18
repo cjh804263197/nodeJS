@@ -1,7 +1,5 @@
 const express = require('express')
-
 var server = express()
-
 server.listen(8080)
 
 // 目录1:当访问路径中有/user/时，则执行以下路由
@@ -11,7 +9,6 @@ var userRoute = express.Router()
 userRoute.get('/1.html', (req, res) => {
     res.send('user1')
 })
-
 // 当访问路径为http://localhost:8080/user/2.html时，执行下面
 userRoute.get('/2.html', (req, res) => {
     res.send('user2')
@@ -25,7 +22,6 @@ var carRoute = express.Router()
 carRoute.get('/1.html', (req, res) => {
     res.send('user-car1')
 })
-
 // 当访问路径为http://localhost:8080/user/car/2.html时，执行下面
 carRoute.get('/2.html', (req, res) => {
     res.send('user-car2')

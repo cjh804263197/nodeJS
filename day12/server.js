@@ -53,9 +53,6 @@ server.engine('html', consolidate.ejs)
 
 // 接受用户请求
 server.get('/index', (req, res) => {
-    // if(req.session.userid){
-
-    // }
     // res.send()与res.render()的区别
     // res.send() 直接向用户发送内容
     // res.render() 编译一些东西，并且将编译的东西发送给用户

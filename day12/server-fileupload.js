@@ -1,7 +1,7 @@
 const express = require('express')
 // const bodyParser = require('body-parser')
 const multer = require('multer')
-
+// 引入文件重命名所需组件
 const fs = require('fs')
 const pathObj = require('path')
 
