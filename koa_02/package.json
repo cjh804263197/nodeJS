@@ -1,0 +1,23 @@
+{
+  "name": "url2-koa",
+  "version": "1.0.0",
+  "description": "koa 2 example with url route",
+  "main": "app.js",
+  "scripts": {
+    "s": "node --use_strict app.js"
+  },
+  "keywords": [
+    "koa",
+    "async"
+  ],
+  "author": "Chen",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6"
+  }
+}
