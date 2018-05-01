@@ -1,36 +1,14 @@
 
-const Sequelize = require('sequelize')
+const Pet = require('../models/Pet')
 
-console.log('init sequelize...');
+const User = require('../models/Users')
 
-var sequelize = new Sequelize('Sequelize', 'root', 'root', {
-    host: 'localhost',
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    }
-})
+const uuid = require('node-uuid')
 
-var fn_insert = async (ctx, next) => {
-    var Pet = sequelize.define('pet', {
-        id: {
-            type: Sequelize.STRING(50),
-            primaryKey: true
-        },
-        name: Sequelize.STRING(100),
-        gender: Sequelize.BOOLEAN,
-        birth: Sequelize.STRING(10),
-        createdAt: Sequelize.BIGINT,
-        updatedAt: Sequelize.BIGINT,
-        version: Sequelize.BIGINT
-    }, {
-            timestamps: false
-    })
+var fn_create_pet_user = async (ctx, next) => {
     let now = Date.now()
     var dog = await Pet.create({
-        id: 'd-' + now,
+        id: uuid.v4(),
         name: 'Odie',
         gender: false,
         birth: '2008-08-08',
@@ -38,11 +16,14 @@ var fn_insert = async (ctx, next) => {
         updatedAt: now,
         version: 0
     });
-    console.log('created: ' + JSON.stringify(dog))
-    var pets = await Pet.findAll()
-    console.log('findAll: ' + JSON.stringify(pets))
+    var user = dog.createUser({
+        id: uuid.v4(),
+        account: 'chen',
+        password: '123456'
+    })
+    ctx.response.body = user.get({'plain': true})
 }
 
 module.exports = {
-    'GET /sequelize': fn_insert
+    'GET /createPetUser': fn_create_pet_user
 }
